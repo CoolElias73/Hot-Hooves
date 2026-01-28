@@ -37,7 +37,6 @@ public class Movements : MonoBehaviour
             {
                 if (IsGrounded())
                 {
-                    canDoubleJump = true;
                     rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
                     print("1");
                 }

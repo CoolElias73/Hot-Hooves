@@ -227,58 +227,6 @@ MonoBehaviour:
   Goat: {fileID: 2116056298}
   fixedX: 0
   zOffset: -10
---- !u!1 &926327338
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 926327340}
-  - component: {fileID: 926327339}
-  m_Layer: 0
-  m_Name: Platform generator
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &926327339
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 926327338}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a047c59fee0c1594b919bf3c409e3daf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Platformgenerator
-  platformPrefab: {fileID: 629057960796054571, guid: de39ecb69c01d4e42ba26611932977d3, type: 3}
-  minX: -2.5
-  maxX: 2.5
-  minYGap: 1.5
-  maxYGap: 2.5
-  platformCount: 10
-  player: {fileID: 2116056298}
-  spawnAheadDistance: 6
---- !u!4 &926327340
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 926327338}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1778790557
 GameObject:
   m_ObjectHideFlags: 0
@@ -290,7 +238,7 @@ GameObject:
   - component: {fileID: 1778790560}
   - component: {fileID: 1778790559}
   - component: {fileID: 1778790558}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -410,8 +358,8 @@ Transform:
   m_GameObject: {fileID: 1778790557}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.0155, y: -2.26, z: 0}
-  m_LocalScale: {x: 19.770601, y: 1, z: 1}
+  m_LocalPosition: {x: -0.1521, y: -2.26, z: 0}
+  m_LocalScale: {x: 12.230631, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -450,7 +398,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Movements
   speed: 7
   jumpForce: 11
-  groundDistance: 0.6
+  groundDistance: 1.1
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!212 &2116056297
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -604,4 +555,3 @@ SceneRoots:
   - {fileID: 519420032}
   - {fileID: 2116056298}
   - {fileID: 1778790560}
-  - {fileID: 926327340}
