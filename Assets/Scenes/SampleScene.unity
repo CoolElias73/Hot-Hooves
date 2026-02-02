@@ -257,11 +257,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Platformgenerator
   platformPrefab: {fileID: 629057960796054571, guid: de39ecb69c01d4e42ba26611932977d3, type: 3}
-  minX: -2.5
-  maxX: 2.5
-  minYGap: 1.5
-  maxYGap: 2.5
-  platformCount: 10
+  minX: -5.5
+  maxX: 5.5
+  minYGap: 4.5
+  maxYGap: 6.5
+  platformCount: 4
   player: {fileID: 2116056298}
   spawnAheadDistance: 6
 --- !u!4 &926327340
