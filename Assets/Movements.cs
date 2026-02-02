@@ -45,12 +45,10 @@ public class SimpleMovement : MonoBehaviour
                 if (IsGrounded())
                 {
                     rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
-                    print("1");
                 }
                 else if (canDoubleJump)
                 {
                     rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
-                    print("2");
                     canDoubleJump = false;
                 }
             }
