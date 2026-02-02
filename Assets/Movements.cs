@@ -3,9 +3,9 @@ using UnityEngine.InputSystem;
 
 public class SimpleMovement : MonoBehaviour
 {
-    public float speed = 5f;
-    public float jumpForce = 10f;
-    public float groundDistance = 0.6f;
+    public float speed = 10f;
+    public float jumpForce = 13f;
+    public float groundDistance = 1.1f;
 
     private Rigidbody2D rb;
     private SpriteRenderer sr;
@@ -13,6 +13,8 @@ public class SimpleMovement : MonoBehaviour
     private bool canDoubleJump = true;
 
     public LayerMask groundMask;
+    public Transform rightPoint;
+    public Transform leftPoint;
 
     void Awake()
     {
@@ -63,6 +65,6 @@ public class SimpleMovement : MonoBehaviour
 
     bool IsGrounded()
     {
-        return Physics2D.Raycast(transform.position, Vector2.down, groundDistance, groundMask);
+        return Physics2D.Raycast(rightPoint.position, Vector2.down, groundDistance, groundMask) || Physics2D.Raycast(leftPoint.position, Vector2.down, groundDistance, groundMask);
     }
 }
