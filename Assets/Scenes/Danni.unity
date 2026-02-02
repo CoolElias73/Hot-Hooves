@@ -132,6 +132,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4278335715571022670, guid: de54a01ef96582b42b84bd51440edc3e, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 436063830}
     - target: {fileID: 6676693875917679986, guid: de54a01ef96582b42b84bd51440edc3e, type: 3}
       propertyPath: m_Name
       value: Platform generator
