@@ -33,6 +33,11 @@ public class SimpleMovement : MonoBehaviour
             else if (horizontal > 0)
                 sr.flipX = false;
 
+            if (IsGrounded())
+            {
+                canDoubleJump = true;
+            }
+
             if (Keyboard.current.spaceKey.wasPressedThisFrame)
             {
                 if (IsGrounded())
