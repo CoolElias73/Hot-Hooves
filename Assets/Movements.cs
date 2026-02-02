@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Movements : MonoBehaviour
+public class SimpleMovement : MonoBehaviour
 {
     public float speed = 5f;
     public float jumpForce = 10f;
