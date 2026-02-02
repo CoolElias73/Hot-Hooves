@@ -131,6 +131,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Platform
       objectReference: {fileID: 0}
+    - target: {fileID: 629057960796054571, guid: de39ecb69c01d4e42ba26611932977d3, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 7357103971110262667, guid: de39ecb69c01d4e42ba26611932977d3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.08476
@@ -250,6 +254,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4278335715571022670, guid: de54a01ef96582b42b84bd51440edc3e, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 914485783}
+    - target: {fileID: 4278335715571022670, guid: de54a01ef96582b42b84bd51440edc3e, type: 3}
+      propertyPath: platformPrefab
+      value: 
+      objectReference: {fileID: 629057960796054571, guid: de39ecb69c01d4e42ba26611932977d3, type: 3}
     - target: {fileID: 6676693875917679986, guid: de54a01ef96582b42b84bd51440edc3e, type: 3}
       propertyPath: m_Name
       value: Platform generator
@@ -350,6 +362,18 @@ PrefabInstance:
     - target: {fileID: 6204267782679157156, guid: 23d06e67f74ed014a8507f5d4cde379c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6896755338300077844, guid: 23d06e67f74ed014a8507f5d4cde379c, type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6896755338300077844, guid: 23d06e67f74ed014a8507f5d4cde379c, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6896755338300077844, guid: 23d06e67f74ed014a8507f5d4cde379c, type: 3}
+      propertyPath: m_GravityScale
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
