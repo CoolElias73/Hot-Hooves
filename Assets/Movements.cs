@@ -16,6 +16,9 @@ public class SimpleMovement : MonoBehaviour
     public Transform rightPoint;
     public Transform leftPoint;
 
+    public AudioSource audioSource;
+    public AudioClip jumpSound;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -42,12 +45,15 @@ public class SimpleMovement : MonoBehaviour
 
             if (Keyboard.current.spaceKey.wasPressedThisFrame)
             {
+                audioSource.pitch = Random.Range(0.9f, 1.1f);
                 if (IsGrounded())
                 {
+                    audioSource.PlayOneShot(jumpSound);
                     rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
                 }
                 else if (canDoubleJump)
                 {
+                    audioSource.PlayOneShot(jumpSound);
                     rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
                     canDoubleJump = false;
                 }
