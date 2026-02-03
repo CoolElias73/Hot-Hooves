@@ -54,7 +54,7 @@ public class platformGenerator : MonoBehaviour
 
         GameObject platformToSpawn;
 
-        // SUPER ENKEL LOGIK
+        
         if (Random.value < platformBChance)
         {
             platformToSpawn = platformB;
