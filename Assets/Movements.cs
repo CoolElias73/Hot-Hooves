@@ -6,18 +6,22 @@ public class SimpleMovement : MonoBehaviour
     public float speed = 8f;
     public float jumpForce = 25f;
     public float groundDistance = 1.1f;
+    public Vector3 scale;
+    public float coyoteTime = 0.15f;
 
     private Rigidbody2D rb;
     private SpriteRenderer sr;
     private float horizontal;
     private bool canDoubleJump = true;
+    private float coyoteTimeCounter;
 
     public LayerMask groundMask;
     public Transform rightPoint;
     public Transform leftPoint;
-
+    
     void Awake()
     {
+        scale = new Vector3(1, 1, 1);
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
     }
@@ -37,14 +41,20 @@ public class SimpleMovement : MonoBehaviour
 
             if (IsGrounded())
             {
+                coyoteTimeCounter = coyoteTime;
                 canDoubleJump = true;
+            }
+            else
+            {
+                coyoteTimeCounter -= Time.deltaTime;
             }
 
             if (Keyboard.current.spaceKey.wasPressedThisFrame)
             {
-                if (IsGrounded())
+                if (coyoteTimeCounter > 0f)
                 {
                     rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+                    coyoteTimeCounter = 0f;
                 }
                 else if (canDoubleJump)
                 {
@@ -52,8 +62,10 @@ public class SimpleMovement : MonoBehaviour
                     canDoubleJump = false;
                 }
             }
-            
+
         }
+
+        transform.localScale = scale;
     }
 
     void FixedUpdate()

@@ -44,13 +44,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4420914f5b17ba4dbe7237d2638844d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Newplattformgeneration
-  platformA: {fileID: 0}
+  platformA: {fileID: 629057960796054571, guid: de39ecb69c01d4e42ba26611932977d3, type: 3}
   platformB: {fileID: 0}
   platformBChance: 0
-  minX: -5.5
-  maxX: 2.5
-  minYGap: 1.5
-  maxYGap: 2.5
-  platformCount: 10
-  player: {fileID: 0}
+  minX: -6.5
+  maxX: 6.5
+  minYGap: 5.5
+  maxYGap: 6.5
+  platformCount: 4
+  player: {fileID: 6204267782679157156, guid: 23d06e67f74ed014a8507f5d4cde379c, type: 3}
   spawnAheadDistance: 6
