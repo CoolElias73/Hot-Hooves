@@ -3,8 +3,8 @@ using UnityEngine.InputSystem;
 
 public class SimpleMovement : MonoBehaviour
 {
-    public float speed = 10f;
-    public float jumpForce = 13f;
+    public float speed = 8f;
+    public float jumpForce = 25f;
     public float groundDistance = 1.1f;
 
     private Rigidbody2D rb;
