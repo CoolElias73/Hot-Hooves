@@ -107,8 +107,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ea3d5bc437231245996613ef4c47bef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Movements
-  speed: 10
-  jumpForce: 13
+  speed: 8
+  jumpForce: 25
   groundDistance: 1.1
   groundMask:
     serializedVersion: 2
@@ -130,7 +130,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 2.4
+  m_GravityScale: 7
   m_Material: {fileID: 6200000, guid: 696570e17ff71c145ad1a754126ff981, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
