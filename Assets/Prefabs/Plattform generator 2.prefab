@@ -47,8 +47,8 @@ MonoBehaviour:
   platformA: {fileID: 0}
   platformB: {fileID: 0}
   platformBChance: 0
-  minX: -6.5
-  maxX: 6.5
+  minX: -7
+  maxX: 7
   minYGap: 5.5
   maxYGap: 6.5
   platformCount: 4
