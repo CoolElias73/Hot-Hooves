@@ -47,10 +47,10 @@ MonoBehaviour:
   platformA: {fileID: 0}
   platformB: {fileID: 0}
   platformBChance: 0
-  minX: -5.5
-  maxX: 2.5
-  minYGap: 1.5
-  maxYGap: 2.5
-  platformCount: 10
+  minX: -6.5
+  maxX: 6.5
+  minYGap: 5.5
+  maxYGap: 6.5
+  platformCount: 4
   player: {fileID: 0}
   spawnAheadDistance: 6
