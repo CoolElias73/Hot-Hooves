@@ -35,9 +35,9 @@ public class SimpleMovement : MonoBehaviour
                 (Keyboard.current.dKey.isPressed || Keyboard.current.rightArrowKey.isPressed ? 1 : 0);
 
             if (horizontal < 0)
-                sr.flipX = true;
+                scale.x = -1;
             else if (horizontal > 0)
-                sr.flipX = false;
+                scale.x = 1;
 
             if (IsGrounded())
             {
@@ -64,7 +64,6 @@ public class SimpleMovement : MonoBehaviour
             }
 
         }
-
         transform.localScale = scale;
     }
 
