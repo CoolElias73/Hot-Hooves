@@ -250,6 +250,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 102808601342021443, guid: e578a58d8da11ac4fb9db1e41d75f55a, type: 3}
+      propertyPath: maxX
+      value: 6.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 102808601342021443, guid: e578a58d8da11ac4fb9db1e41d75f55a, type: 3}
+      propertyPath: minX
+      value: -6.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 102808601342021443, guid: e578a58d8da11ac4fb9db1e41d75f55a, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 1300820546}
@@ -257,6 +265,18 @@ PrefabInstance:
       propertyPath: platformA
       value: 
       objectReference: {fileID: 629057960796054571, guid: de39ecb69c01d4e42ba26611932977d3, type: 3}
+    - target: {fileID: 102808601342021443, guid: e578a58d8da11ac4fb9db1e41d75f55a, type: 3}
+      propertyPath: platformB
+      value: 
+      objectReference: {fileID: 4708985403027067065, guid: e9e472d31a129644aaa762057f4f4446, type: 3}
+    - target: {fileID: 102808601342021443, guid: e578a58d8da11ac4fb9db1e41d75f55a, type: 3}
+      propertyPath: platformCount
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 102808601342021443, guid: e578a58d8da11ac4fb9db1e41d75f55a, type: 3}
+      propertyPath: platformBChance
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 5843369238157330120, guid: e578a58d8da11ac4fb9db1e41d75f55a, type: 3}
       propertyPath: m_Name
       value: Plattform generator 2
@@ -356,7 +376,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5638867816341187124, guid: ede44678776284947ba23addacd870e0, type: 3}
       propertyPath: riseSpeed
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6514023796810232353, guid: ede44678776284947ba23addacd870e0, type: 3}
       propertyPath: m_SortingOrder

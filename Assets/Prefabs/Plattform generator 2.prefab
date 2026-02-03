@@ -45,10 +45,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Newplattformgeneration
   platformA: {fileID: 629057960796054571, guid: de39ecb69c01d4e42ba26611932977d3, type: 3}
-  platformB: {fileID: 0}
-  platformBChance: 0
-  minX: -6.5
-  maxX: 6.5
+  platformB: {fileID: 4708985403027067065, guid: e9e472d31a129644aaa762057f4f4446, type: 3}
+  platformBChance: 0.2
+  minX: -6.9
+  maxX: 6.9
   minYGap: 5.5
   maxYGap: 6.5
   platformCount: 4
