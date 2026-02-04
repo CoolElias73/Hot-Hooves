@@ -98,4 +98,10 @@ public class SimpleMovement : MonoBehaviour
         if (audioSource != null)
             audioSource.pitch = pitch;
     }
+
+    public void IncreaseStats(float speedIncrease, float jumpIncrease)
+    {
+        speed += speedIncrease;
+        jumpForce += jumpIncrease;
+    }
 }
