@@ -13,5 +13,12 @@ public class MainMenu : MonoBehaviour
         Application.Quit();
         Debug.Log("Quit Game");
     }
+
+    public GameObject optionsPanel;
+
+    public void OpenOptions()
+    {
+        optionsPanel.SetActive(true);
+    }
 }
 
