@@ -119,6 +119,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &27574462 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6584597021061002082, guid: 270cc82683e831e4b9570674a1f72aa6, type: 3}
+  m_PrefabInstance: {fileID: 1235568361302990599}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &779955373
 GameObject:
   m_ObjectHideFlags: 0
@@ -318,6 +323,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1690992523}
+    - target: {fileID: 3959389878013655108, guid: 270cc82683e831e4b9570674a1f72aa6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1690992523}
     - target: {fileID: 6545656204556183115, guid: 270cc82683e831e4b9570674a1f72aa6, type: 3}
       propertyPath: m_Name
       value: Canvas
@@ -392,6 +401,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2708084381195294477, guid: 5daaa4d07eeeba547bdb3f97cd7cd463, type: 3}
+      propertyPath: optionsPanel
+      value: 
+      objectReference: {fileID: 27574462}
     - target: {fileID: 7346187798435956802, guid: 5daaa4d07eeeba547bdb3f97cd7cd463, type: 3}
       propertyPath: m_Name
       value: MenuManager
