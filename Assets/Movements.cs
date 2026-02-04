@@ -8,6 +8,8 @@ public class SimpleMovement : MonoBehaviour
     public float groundDistance = 1.1f;
     public Vector3 scale;
     public float coyoteTime = 0.15f;
+    public AudioSource audioSource;
+    public AudioClip jumpClip;
 
     private Rigidbody2D rb;
     private SpriteRenderer sr;
@@ -24,6 +26,8 @@ public class SimpleMovement : MonoBehaviour
         scale = new Vector3(1, 1, 1);
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
+        if (audioSource == null)
+            audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -55,11 +59,13 @@ public class SimpleMovement : MonoBehaviour
                 {
                     rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
                     coyoteTimeCounter = 0f;
+                    PlayJumpSound();
                 }
                 else if (canDoubleJump)
                 {
                     rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
                     canDoubleJump = false;
+                    PlayJumpSound();
                 }
             }
 
@@ -75,5 +81,11 @@ public class SimpleMovement : MonoBehaviour
     bool IsGrounded()
     {
         return Physics2D.Raycast(rightPoint.position, Vector2.down, groundDistance, groundMask) || Physics2D.Raycast(leftPoint.position, Vector2.down, groundDistance, groundMask);
+    }
+
+    void PlayJumpSound()
+    {
+        if (audioSource != null && jumpClip != null)
+            audioSource.PlayOneShot(jumpClip);
     }
 }
