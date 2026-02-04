@@ -88,4 +88,11 @@ public class SimpleMovement : MonoBehaviour
         if (audioSource != null && jumpClip != null)
             audioSource.PlayOneShot(jumpClip);
     }
+
+    public void IncreaseStats(float speedAmount, float jumpAmount)
+    {
+        speed += speedAmount;
+        jumpForce += jumpAmount;
+    }
+
 }
