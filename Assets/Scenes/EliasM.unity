@@ -167,6 +167,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6314760012262530363, guid: ad9520d7235d7ea43aea321087b080bf, type: 3}
+      propertyPath: timeBeforeSpeedUp
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6314760012262530363, guid: ad9520d7235d7ea43aea321087b080bf, type: 3}
+      propertyPath: pitchIncreaseAmount
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 6314760012262530363, guid: ad9520d7235d7ea43aea321087b080bf, type: 3}
+      propertyPath: increaseEverySeconds
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 8032137929024592547, guid: ad9520d7235d7ea43aea321087b080bf, type: 3}
       propertyPath: m_Name
       value: Background_music
@@ -292,6 +304,10 @@ PrefabInstance:
     - target: {fileID: 115364775056899716, guid: ede44678776284947ba23addacd870e0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5638867816341187124, guid: ede44678776284947ba23addacd870e0, type: 3}
+      propertyPath: speedUpAfterSeconds
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8430555568574013580, guid: ede44678776284947ba23addacd870e0, type: 3}
       propertyPath: m_Name

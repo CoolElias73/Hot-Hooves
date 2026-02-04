@@ -2,17 +2,27 @@ using UnityEngine;
 
 public class RisingLava : MonoBehaviour
 {
-    public float riseSpeed = 2f;
-    public float speedUpAfterSeconds = 30f;
-    public float boostedRiseSpeed = 4f;
+    public float riseSpeed = 4f;
+    public float speedIncreaseEverySeconds = 20f;
+    public float speedIncreaseAmount = 2f;
+
+    float _currentSpeed;
+    float _nextIncreaseTime;
+
+    void Start()
+    {
+        _currentSpeed = riseSpeed;
+        _nextIncreaseTime = Time.timeSinceLevelLoad + speedIncreaseEverySeconds;
+    }
 
     void Update()
     {
-        float currentSpeed = Time.timeSinceLevelLoad >= speedUpAfterSeconds
-            ? boostedRiseSpeed
-            : riseSpeed;
-
-        transform.Translate(Vector2.up * currentSpeed * Time.deltaTime);
+        if (Time.timeSinceLevelLoad >= _nextIncreaseTime)
+        {
+            _currentSpeed += speedIncreaseAmount;
+            _nextIncreaseTime = Time.timeSinceLevelLoad + speedIncreaseEverySeconds;
+        }
+        transform.Translate(Vector2.up * _currentSpeed * Time.deltaTime);
     }
 
 
