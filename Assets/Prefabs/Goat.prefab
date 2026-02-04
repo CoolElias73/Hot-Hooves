@@ -115,6 +115,8 @@ MonoBehaviour:
   coyoteTime: 0.15
   audioSource: {fileID: 6549769600134692837}
   jumpClip: {fileID: 8300000, guid: 6754da62f5e3b3e4b98ba25f8aa13947, type: 3}
+  normalJumpPitch: 1
+  doubleJumpPitch: 1.5
   groundMask:
     serializedVersion: 2
     m_Bits: 64

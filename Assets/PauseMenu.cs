@@ -1,41 +1,53 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
-public class MainMenu : MonoBehaviour
+public class PauseMenu : MonoBehaviour
 {
-    private bool showOptions;
+    public string mainMenuSceneName = "MainMenu";
+    private bool isPaused;
     private static Texture2D buttonTex;
     private static GUIStyle buttonStyle;
 
+    void Update()
+    {
+        if (IsEscapePressedThisFrame())
+            TogglePause();
+    }
+
     void OnGUI()
     {
+        if (!isPaused)
+            return;
+
         EnsureStyles();
-        float width = 220f;
-        float height = 50f;
+        float width = 240f;
+        float height = 55f;
         float x = (Screen.width - width) * 0.5f;
         float y = (Screen.height - (height * 3f + 20f)) * 0.5f;
 
-        if (!showOptions)
-        {
-            if (GUI.Button(new Rect(x, y, width, height), "Play", buttonStyle))
-                LoadGame();
+        if (GUI.Button(new Rect(x, y, width, height), "Resume", buttonStyle))
+            TogglePause();
 
-            if (GUI.Button(new Rect(x, y + height + 10f, width, height), "Options", buttonStyle))
-                showOptions = true;
+        if (GUI.Button(new Rect(x, y + height + 10f, width, height), "Main Menu", buttonStyle))
+            LoadMainMenu();
 
-            if (GUI.Button(new Rect(x, y + (height + 10f) * 2f, width, height), "Quit", buttonStyle))
-                QuitGame();
-        }
-        else
-        {
-            if (GUI.Button(new Rect(x, y + height + 10f, width, height), "Back", buttonStyle))
-                showOptions = false;
-        }
+        if (GUI.Button(new Rect(x, y + (height + 10f) * 2f, width, height), "Quit", buttonStyle))
+            QuitGame();
     }
 
-    public void LoadGame()
+    public void TogglePause()
     {
-        SceneManager.LoadScene("SampleScene");
+        isPaused = !isPaused;
+        Time.timeScale = isPaused ? 0f : 1f;
+        Cursor.visible = isPaused;
+        Cursor.lockState = isPaused ? CursorLockMode.None : CursorLockMode.Locked;
+    }
+
+    public void LoadMainMenu()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(mainMenuSceneName);
     }
 
     public void QuitGame()
@@ -45,6 +57,11 @@ public class MainMenu : MonoBehaviour
 #else
         Application.Quit();
 #endif
+    }
+
+    bool IsEscapePressedThisFrame()
+    {
+        return Keyboard.current != null && Keyboard.current.escapeKey.wasPressedThisFrame;
     }
 
     void EnsureStyles()
@@ -70,12 +87,4 @@ public class MainMenu : MonoBehaviour
             buttonStyle.fontSize = 20;
         }
     }
-
-    public GameObject optionsPanel;
-
-    public void OpenOptions()
-    {
-        optionsPanel.SetActive(true);
-    }
 }
-

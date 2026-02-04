@@ -10,6 +10,8 @@ public class SimpleMovement : MonoBehaviour
     public float coyoteTime = 0.15f;
     public AudioSource audioSource;
     public AudioClip jumpClip;
+    public float normalJumpPitch = 1f;
+    public float doubleJumpPitch = 1.5f;
 
     private Rigidbody2D rb;
     private SpriteRenderer sr;
@@ -59,12 +61,14 @@ public class SimpleMovement : MonoBehaviour
                 {
                     rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
                     coyoteTimeCounter = 0f;
+                    SetJumpPitch(normalJumpPitch);
                     PlayJumpSound();
                 }
                 else if (canDoubleJump)
                 {
                     rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
                     canDoubleJump = false;
+                    SetJumpPitch(doubleJumpPitch);
                     PlayJumpSound();
                 }
             }
@@ -89,10 +93,15 @@ public class SimpleMovement : MonoBehaviour
             audioSource.PlayOneShot(jumpClip);
     }
 
-    public void IncreaseStats(float speedAmount, float jumpAmount)
+    void SetJumpPitch(float pitch)
     {
-        speed += speedAmount;
-        jumpForce += jumpAmount;
+        if (audioSource != null)
+            audioSource.pitch = pitch;
     }
 
+    public void IncreaseStats(float speedIncrease, float jumpIncrease)
+    {
+        speed += speedIncrease;
+        jumpForce += jumpIncrease;
+    }
 }
