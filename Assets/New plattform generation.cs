@@ -5,10 +5,13 @@ public class platformGenerator : MonoBehaviour
     [Header("Platform Prefabs")]
     public GameObject platformA;
     public GameObject platformB;
+    public GameObject platformC;
 
     [Header("Chance")]
     [Range(0f, 1f)]
-    public float platformBChance = 0.3f; // 30% chans för B
+    public float platformBChance = 0.3f; 
+    [Range(0f, 1f)]
+    public float platformCChance = 0.1f;    
 
     [Header("Horizontal Range")]
     public float minX = -2.5f;
@@ -52,10 +55,15 @@ public class platformGenerator : MonoBehaviour
 
         currentY += randomGap;
 
+        float roll = Random.value;
         GameObject platformToSpawn;
 
         
-        if (Random.value < platformBChance)
+        if (roll < platformCChance)
+        {
+            platformToSpawn = platformC;
+        }
+        else if (roll < platformCChance + platformBChance)
         {
             platformToSpawn = platformB;
         }
