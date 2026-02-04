@@ -3,8 +3,8 @@ using UnityEngine.InputSystem;
 
 public class SimpleMovement : MonoBehaviour
 {
-    public float speed = 10f;
-    public float jumpForce = 33f;
+    public float speed = 8f;
+    public float jumpForce = 25f;
     public float doubleJumpForce = 22f;
     public float groundDistance = 1.1f;
     public Vector3 scale;
