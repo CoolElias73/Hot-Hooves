@@ -112,6 +112,12 @@ MonoBehaviour:
   jumpForce: 33
   doubleJumpForce: 22
   groundDistance: 1.1
+  groundAcceleration: 1000
+  groundDeceleration: 1000
+  iceAcceleration: 1000
+  iceDeceleration: 5
+  airAcceleration: 1000
+  airDeceleration: 5
   scale: {x: 0, y: 0, z: 0}
   coyoteTime: 0.15
   audioSource: {fileID: 6549769600134692837}
@@ -139,7 +145,7 @@ Rigidbody2D:
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 7
-  m_Material: {fileID: 6200000, guid: 696570e17ff71c145ad1a754126ff981, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -160,7 +166,7 @@ BoxCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 8f1a7a3a7f7f4a29a1f7d9c6a2b4e5f8, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0

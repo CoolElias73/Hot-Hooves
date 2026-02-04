@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7606657759104790022}
   - component: {fileID: 4771951849403301829}
   - component: {fileID: 9169113902430807484}
+  - component: {fileID: 5089624538477903948}
   m_Layer: 6
   m_Name: Iceblock
   m_TagString: Untagged
@@ -137,3 +138,18 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 3.1987624, y: 0.8018742}
   m_EdgeRadius: 0
+--- !u!114 &5089624538477903948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6746556081264255909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c1a0d8e7f3e4a2a9b1c2d3e4f506172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  friction: 0.02
+  bounciness: 0
+  runtimeMaterial: {fileID: 0}
