@@ -3,8 +3,9 @@ using UnityEngine.InputSystem;
 
 public class SimpleMovement : MonoBehaviour
 {
-    public float speed = 8f;
-    public float jumpForce = 25f;
+    public float speed = 10f;
+    public float jumpForce = 33f;
+    public float doubleJumpForce = 22f;
     public float groundDistance = 1.1f;
     public Vector3 scale;
     public float coyoteTime = 0.15f;
@@ -66,7 +67,7 @@ public class SimpleMovement : MonoBehaviour
                 }
                 else if (canDoubleJump)
                 {
-                    rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+                    rb.linearVelocity = new Vector2(rb.linearVelocity.x, doubleJumpForce);
                     canDoubleJump = false;
                     SetJumpPitch(doubleJumpPitch);
                     PlayJumpSound();

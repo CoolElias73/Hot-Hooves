@@ -168,12 +168,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6314760012262530363, guid: ad9520d7235d7ea43aea321087b080bf, type: 3}
+      propertyPath: speedUpDuration
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6314760012262530363, guid: ad9520d7235d7ea43aea321087b080bf, type: 3}
       propertyPath: timeBeforeSpeedUp
-      value: 50
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 6314760012262530363, guid: ad9520d7235d7ea43aea321087b080bf, type: 3}
       propertyPath: pitchIncreaseAmount
-      value: 0.05
+      value: 0.02
       objectReference: {fileID: 0}
     - target: {fileID: 6314760012262530363, guid: ad9520d7235d7ea43aea321087b080bf, type: 3}
       propertyPath: increaseEverySeconds
@@ -306,7 +310,27 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5638867816341187124, guid: ede44678776284947ba23addacd870e0, type: 3}
+      propertyPath: riseSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5638867816341187124, guid: ede44678776284947ba23addacd870e0, type: 3}
+      propertyPath: boostedRiseSpeed
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5638867816341187124, guid: ede44678776284947ba23addacd870e0, type: 3}
+      propertyPath: speedIncreaseAmount
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5638867816341187124, guid: ede44678776284947ba23addacd870e0, type: 3}
       propertyPath: speedUpAfterSeconds
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5638867816341187124, guid: ede44678776284947ba23addacd870e0, type: 3}
+      propertyPath: changeSpeedEverySeconds
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5638867816341187124, guid: ede44678776284947ba23addacd870e0, type: 3}
+      propertyPath: speedIncreaseEverySeconds
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8430555568574013580, guid: ede44678776284947ba23addacd870e0, type: 3}
@@ -525,6 +549,22 @@ PrefabInstance:
     - target: {fileID: 6204267782679157156, guid: 23d06e67f74ed014a8507f5d4cde379c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6896755338300077844, guid: 23d06e67f74ed014a8507f5d4cde379c, type: 3}
+      propertyPath: m_GravityScale
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 9003661866778535936, guid: 23d06e67f74ed014a8507f5d4cde379c, type: 3}
+      propertyPath: speed
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 9003661866778535936, guid: 23d06e67f74ed014a8507f5d4cde379c, type: 3}
+      propertyPath: jumpForce
+      value: 32
+      objectReference: {fileID: 0}
+    - target: {fileID: 9003661866778535936, guid: 23d06e67f74ed014a8507f5d4cde379c, type: 3}
+      propertyPath: doubleJumpForce
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
