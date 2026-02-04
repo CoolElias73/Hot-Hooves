@@ -3,10 +3,16 @@ using UnityEngine;
 public class RisingLava : MonoBehaviour
 {
     public float riseSpeed = 2f;
+    public float speedUpAfterSeconds = 30f;
+    public float boostedRiseSpeed = 4f;
 
     void Update()
     {
-        transform.Translate(Vector2.up * riseSpeed * Time.deltaTime);
+        float currentSpeed = Time.timeSinceLevelLoad >= speedUpAfterSeconds
+            ? boostedRiseSpeed
+            : riseSpeed;
+
+        transform.Translate(Vector2.up * currentSpeed * Time.deltaTime);
     }
 
 
