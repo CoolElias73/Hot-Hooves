@@ -9,33 +9,7 @@ public class MainMenu : MonoBehaviour
 
     void OnGUI()
     {
-        EnsureStyles();
-        float width = 220f;
-        float height = 50f;
-        float x = (Screen.width - width) * 0.5f;
-        float y = (Screen.height - (height * 3f + 20f)) * 0.5f;
-
-        if (!showOptions)
-        {
-            if (GUI.Button(new Rect(x, y, width, height), "Play", buttonStyle))
-                LoadGame();
-
-            if (GUI.Button(new Rect(x, y + height + 10f, width, height), "Options", buttonStyle))
-                showOptions = true;
-
-            if (GUI.Button(new Rect(x, y + (height + 10f) * 2f, width, height), "Quit", buttonStyle))
-                QuitGame();
-        }
-        else
-        {
-            if (GUI.Button(new Rect(x, y + height + 10f, width, height), "Back", buttonStyle))
-                showOptions = false;
-        }
-    }
-
-    public void LoadGame()
-    {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene(1);
     }
 
     public void QuitGame()
@@ -69,6 +43,13 @@ public class MainMenu : MonoBehaviour
             buttonStyle.alignment = TextAnchor.MiddleCenter;
             buttonStyle.fontSize = 20;
         }
+    }
+
+    public GameObject optionsPanel;
+
+    public void OpenOptions()
+    {
+        optionsPanel.SetActive(true);
     }
 
     public GameObject optionsPanel;
