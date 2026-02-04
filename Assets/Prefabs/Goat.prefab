@@ -109,7 +109,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Movements
   speed: 8
-  jumpForce: 25
+  jumpForce: 33
+  doubleJumpForce: 22
   groundDistance: 1.1
   scale: {x: 0, y: 0, z: 0}
   coyoteTime: 0.15
