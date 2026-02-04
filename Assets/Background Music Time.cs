@@ -3,10 +3,10 @@ using UnityEngine;
 public class BackgroundMusicTime : MonoBehaviour
 {
     [SerializeField] private AudioSource audioSource;
-    [SerializeField] private float timeBeforeSpeedUp = 30f;
+    [SerializeField] private float timeBeforeSpeedUp = 20f;
     [SerializeField] private float pitchIncreaseAmount = 0.05f;
-    [SerializeField] private float increaseEverySeconds = 10f;
-    [SerializeField] private float speedUpDuration = 1f;
+    [SerializeField] private float increaseEverySeconds = 20f;
+    [SerializeField] private float speedUpDuration = 4f;
 
     void Start()
     {

@@ -9,7 +9,7 @@ public class Powerup : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            SimpleMovement player = other.GetComponent<SimpleMovement>();
+            Movements player = other.GetComponent<Movements>();
             if (player != null)
             {
                 player.IncreaseStats(speedIncrease, jumpIncrease);

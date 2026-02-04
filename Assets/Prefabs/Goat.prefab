@@ -108,13 +108,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ea3d5bc437231245996613ef4c47bef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Movements
-  speed: 8
-  jumpForce: 25
+  speed: 10
+  jumpForce: 33
+  doubleJumpForce: 22
   groundDistance: 1.1
   scale: {x: 0, y: 0, z: 0}
   coyoteTime: 0.15
   audioSource: {fileID: 6549769600134692837}
   jumpClip: {fileID: 8300000, guid: 6754da62f5e3b3e4b98ba25f8aa13947, type: 3}
+  normalJumpPitch: 1
+  doubleJumpPitch: 1.5
   groundMask:
     serializedVersion: 2
     m_Bits: 64

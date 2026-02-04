@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7485494506140175966}
   - component: {fileID: 102808601342021443}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Plattform generator 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,7 +46,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Newplattformgeneration
   platformA: {fileID: 629057960796054571, guid: de39ecb69c01d4e42ba26611932977d3, type: 3}
   platformB: {fileID: 4708985403027067065, guid: e9e472d31a129644aaa762057f4f4446, type: 3}
+  platformC: {fileID: 6746556081264255909, guid: 757d1019673efd54882f5aa43ce934f0, type: 3}
   platformBChance: 0.2
+  platformCChance: 0.05
   minX: -6.9
   maxX: 6.9
   minYGap: 5.5
