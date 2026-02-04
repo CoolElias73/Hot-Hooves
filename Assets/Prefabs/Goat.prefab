@@ -108,7 +108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ea3d5bc437231245996613ef4c47bef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Movements
-  speed: 8
+  speed: 10
   jumpForce: 33
   doubleJumpForce: 22
   groundDistance: 1.1
