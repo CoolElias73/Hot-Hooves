@@ -5,13 +5,20 @@ public class MainMenu : MonoBehaviour
 {
     public void PlayGame()
     {
-        SceneManager.LoadScene("Krisztian");
+        SceneManager.LoadScene(1);
     }
 
     public void QuitGame()
     {
         Application.Quit();
         Debug.Log("Quit Game");
+    }
+
+    public GameObject optionsPanel;
+
+    public void OpenOptions()
+    {
+        optionsPanel.SetActive(true);
     }
 }
 
