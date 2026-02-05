@@ -1,6 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 using TMPro;
 
 public class EliasMStatsHUD : MonoBehaviour
@@ -9,11 +7,9 @@ public class EliasMStatsHUD : MonoBehaviour
     [SerializeField] private RisingLava lava;
     [SerializeField] private TMP_Text text;
     [SerializeField] private TMP_Text lavaText;
-    [SerializeField] private Vector2 padding = new Vector2(20f, 20f);
     [SerializeField] private float updateInterval = 0.1f;
     [SerializeField] private bool heightFromStart = true;
 
-    private Rigidbody2D _playerRb;
     private float _startY;
     private float _nextUpdate;
 
@@ -38,7 +34,7 @@ public class EliasMStatsHUD : MonoBehaviour
         if (text == null)
             return;
 
-        if (player == null || _playerRb == null)
+        if (player == null)
             ResolveReferences();
 
         float heightValue = player != null ? player.transform.position.y : 0f;
@@ -63,17 +59,15 @@ public class EliasMStatsHUD : MonoBehaviour
 
         if (player != null)
         {
-            _playerRb = player.GetComponent<Rigidbody2D>();
             _startY = player.transform.position.y;
         }
     }
 
-    public void Initialize(TMP_Text tmpText, Movements playerRef, RisingLava lavaRef, Vector2 paddingValue)
+    public void Initialize(TMP_Text tmpText, Movements playerRef, RisingLava lavaRef)
     {
         text = tmpText;
         player = playerRef;
         lava = lavaRef;
-        padding = paddingValue;
         ResolveReferences();
     }
 
@@ -114,58 +108,4 @@ public class EliasMStatsHUD : MonoBehaviour
         lavaText.text = $"Lava distance: {distanceFromBottom:0.0} m";
     }
 
-    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
-    static void AutoCreateInEliasM()
-    {
-        if (SceneManager.GetActiveScene().name != "EliasM")
-            return;
-
-        if (FindFirstObjectByType<EliasMStatsHUD>() != null)
-            return;
-
-        var canvasGo = new GameObject("EliasM_StatsCanvas");
-        var canvas = canvasGo.AddComponent<Canvas>();
-        canvas.renderMode = RenderMode.ScreenSpaceOverlay;
-        canvas.sortingOrder = 1000;
-
-        canvasGo.AddComponent<CanvasScaler>();
-        canvasGo.AddComponent<GraphicRaycaster>();
-
-        var textGo = new GameObject("EliasM_StatsText");
-        textGo.transform.SetParent(canvasGo.transform, false);
-
-        var rect = textGo.AddComponent<RectTransform>();
-        rect.anchorMin = new Vector2(1f, 1f);
-        rect.anchorMax = new Vector2(1f, 1f);
-        rect.pivot = new Vector2(1f, 1f);
-        rect.sizeDelta = new Vector2(360f, 120f);
-        rect.anchoredPosition = new Vector2(-20f, -20f);
-
-        var tmp = textGo.AddComponent<TextMeshProUGUI>();
-        tmp.fontSize = 24f;
-        tmp.alignment = TextAlignmentOptions.TopRight;
-        tmp.textWrappingMode = TextWrappingModes.NoWrap;
-        tmp.text = "Height: 0\nJump force gained: 0";
-
-        var lavaTextGo = new GameObject("EliasM_LavaText");
-        lavaTextGo.transform.SetParent(canvasGo.transform, false);
-
-        var lavaRect = lavaTextGo.AddComponent<RectTransform>();
-        lavaRect.anchorMin = new Vector2(0.5f, 0f);
-        lavaRect.anchorMax = new Vector2(0.5f, 0f);
-        lavaRect.pivot = new Vector2(0.5f, 0f);
-        lavaRect.sizeDelta = new Vector2(520f, 90f);
-        lavaRect.anchoredPosition = new Vector2(0f, 20f);
-
-        var lavaTmp = lavaTextGo.AddComponent<TextMeshProUGUI>();
-        lavaTmp.fontSize = 36f;
-        lavaTmp.alignment = TextAlignmentOptions.Bottom;
-        lavaTmp.textWrappingMode = TextWrappingModes.NoWrap;
-        lavaTmp.text = string.Empty;
-        lavaTmp.enabled = false;
-
-        var hud = textGo.AddComponent<EliasMStatsHUD>();
-        hud.Initialize(tmp, FindFirstObjectByType<Movements>(), FindFirstObjectByType<RisingLava>(), new Vector2(20f, 20f));
-        hud.InitializeLavaText(lavaTmp);
-    }
 }
