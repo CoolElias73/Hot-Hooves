@@ -3,10 +3,12 @@ using UnityEngine.InputSystem;
 
 public class Movements : MonoBehaviour
 {
-    public float speed = 8f;
-    public float jumpForce = 25f;
+    public float speed = 10f;
+    public float jumpForce = 33f;
     public float doubleJumpForce = 22f;
     public float groundDistance = 1.1f;
+    public float iceAcceleration = 30f;
+    public float iceDeceleration = 5f;
     public Vector3 scale;
     public float coyoteTime = 0.15f;
     public AudioSource audioSource;
@@ -80,12 +82,41 @@ public class Movements : MonoBehaviour
 
     void FixedUpdate()
     {
-        rb.linearVelocity = new Vector2(horizontal * speed, rb.linearVelocity.y);
+        bool onIce = IsOnIce();
+        if (onIce)
+        {
+            float targetSpeed = horizontal * speed;
+            float accel = horizontal != 0 ? iceAcceleration : iceDeceleration;
+            float newX = Mathf.MoveTowards(rb.linearVelocity.x, targetSpeed, accel * Time.fixedDeltaTime);
+            rb.linearVelocity = new Vector2(newX, rb.linearVelocity.y);
+        }
+        else
+        {
+            rb.linearVelocity = new Vector2(horizontal * speed, rb.linearVelocity.y);
+        }
     }
 
     bool IsGrounded()
     {
-        return Physics2D.Raycast(rightPoint.position, Vector2.down, groundDistance, groundMask) || Physics2D.Raycast(leftPoint.position, Vector2.down, groundDistance, groundMask);
+        return TryGetGroundHit(out _);
+    }
+
+    bool IsOnIce()
+    {
+        if (!TryGetGroundHit(out RaycastHit2D hit))
+            return false;
+
+        return hit.collider != null && hit.collider.GetComponent<IceSurface>() != null;
+    }
+
+    bool TryGetGroundHit(out RaycastHit2D hit)
+    {
+        hit = Physics2D.Raycast(rightPoint.position, Vector2.down, groundDistance, groundMask);
+        if (hit.collider != null)
+            return true;
+
+        hit = Physics2D.Raycast(leftPoint.position, Vector2.down, groundDistance, groundMask);
+        return hit.collider != null;
     }
 
     void PlayJumpSound()
