@@ -9,6 +9,7 @@ public class GameOverTextSlide : MonoBehaviour
     [SerializeField] private TMP_Text text;
     [SerializeField] private TMP_Text highscoreText;
     [SerializeField] private Button mainMenuButton;
+    [SerializeField] private Button retryButton;
     [SerializeField] private float offscreenPadding = 80f;
     [SerializeField] private float minDuration = 0.1f;
     [SerializeField] private float postSlideDelay = 2f;
@@ -108,6 +109,8 @@ public class GameOverTextSlide : MonoBehaviour
             highscoreText.enabled = true;
         if (mainMenuButton != null)
             mainMenuButton.gameObject.SetActive(true);
+        if (retryButton != null)
+            retryButton.gameObject.SetActive(true);
 
         _slideRoutine = null;
     }
@@ -147,23 +150,37 @@ public class GameOverTextSlide : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
-    public void Initialize(RisingLava lavaRef, float offscreenPaddingValue, TMP_Text highscoreTextRef, Button mainMenuButtonRef)
+    private void OnRetryClicked()
+    {
+        var scene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(scene.name);
+    }
+
+    public void Initialize(RisingLava lavaRef, float offscreenPaddingValue, TMP_Text highscoreTextRef, Button mainMenuButtonRef, Button retryButtonRef)
     {
         lava = lavaRef;
         offscreenPadding = offscreenPaddingValue;
         highscoreText = highscoreTextRef;
         mainMenuButton = mainMenuButtonRef;
+        retryButton = retryButtonRef;
         if (text != null)
             text.enabled = false;
         if (highscoreText != null)
             highscoreText.enabled = false;
         if (mainMenuButton != null)
             mainMenuButton.gameObject.SetActive(false);
+        if (retryButton != null)
+            retryButton.gameObject.SetActive(false);
 
         if (mainMenuButton != null)
         {
             mainMenuButton.onClick.RemoveListener(OnMainMenuClicked);
             mainMenuButton.onClick.AddListener(OnMainMenuClicked);
+        }
+        if (retryButton != null)
+        {
+            retryButton.onClick.RemoveListener(OnRetryClicked);
+            retryButton.onClick.AddListener(OnRetryClicked);
         }
     }
 }

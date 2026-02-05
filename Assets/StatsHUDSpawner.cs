@@ -156,8 +156,55 @@ public class StatsHUDSpawner : MonoBehaviour
         if (menuFont != null)
             buttonText.font = menuFont;
 
+        var retryButtonGo = new GameObject("StatsHUD_RetryButton");
+        retryButtonGo.transform.SetParent(canvasGo.transform, false);
+
+        var retryRect = retryButtonGo.AddComponent<RectTransform>();
+        retryRect.anchorMin = new Vector2(0.5f, 0.5f);
+        retryRect.anchorMax = new Vector2(0.5f, 0.5f);
+        retryRect.pivot = new Vector2(0.5f, 0.5f);
+        retryRect.sizeDelta = new Vector2(400f, 75f);
+        retryRect.anchoredPosition = new Vector2(0f, -225f);
+
+        var retryImage = retryButtonGo.AddComponent<Image>();
+        retryImage.color = Color.white;
+        retryImage.sprite = null;
+        retryImage.type = Image.Type.Simple;
+
+        var retryButton = retryButtonGo.AddComponent<Button>();
+        retryButton.transition = Selectable.Transition.ColorTint;
+        retryButton.colors = new ColorBlock
+        {
+            normalColor = new Color(1f, 1f, 1f, 1f),
+            highlightedColor = new Color(0.9607843f, 0.9607843f, 0.9607843f, 1f),
+            pressedColor = new Color(0.78431374f, 0.78431374f, 0.78431374f, 1f),
+            selectedColor = new Color(0.9607843f, 0.9607843f, 0.9607843f, 1f),
+            disabledColor = new Color(0.78431374f, 0.78431374f, 0.78431374f, 0.5019608f),
+            colorMultiplier = 1f,
+            fadeDuration = 0.1f
+        };
+        retryButton.targetGraphic = retryImage;
+
+        var retryTextGo = new GameObject("Text");
+        retryTextGo.transform.SetParent(retryButtonGo.transform, false);
+
+        var retryTextRect = retryTextGo.AddComponent<RectTransform>();
+        retryTextRect.anchorMin = Vector2.zero;
+        retryTextRect.anchorMax = Vector2.one;
+        retryTextRect.offsetMin = Vector2.zero;
+        retryTextRect.offsetMax = Vector2.zero;
+
+        var retryText = retryTextGo.AddComponent<TextMeshProUGUI>();
+        retryText.fontSize = mainMenuFontSize;
+        retryText.alignment = TextAlignmentOptions.Center;
+        retryText.textWrappingMode = TextWrappingModes.NoWrap;
+        retryText.text = "Retry";
+        retryText.color = new Color(0.19607843f, 0.19607843f, 0.19607843f, 1f);
+        if (menuFont != null)
+            retryText.font = menuFont;
+
         var gameOverSlide = gameOverGo.AddComponent<GameOverTextSlide>();
-        gameOverSlide.Initialize(FindFirstObjectByType<RisingLava>(), gameOverOffscreenPadding, highscoreTmp, button);
+        gameOverSlide.Initialize(FindFirstObjectByType<RisingLava>(), gameOverOffscreenPadding, highscoreTmp, button, retryButton);
 
         var hud = textGo.AddComponent<EliasMStatsHUD>();
         hud.Initialize(tmp, FindFirstObjectByType<Movements>(), FindFirstObjectByType<RisingLava>());
