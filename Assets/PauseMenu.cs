@@ -4,14 +4,37 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
-    public GameObject pausePanel;
+    [SerializeField] GameObject pausePanel;
 
     bool isPaused = false;
     InputAction pauseAction;
+    void Awake()
+    {
+        if (pausePanel == null)
+        {
+            var direct = transform.Find("PausePanel");
+            if (direct != null)
+                pausePanel = direct.gameObject;
+        }
+
+        if (pausePanel == null)
+        {
+            var found = GameObject.Find("PausePanel");
+            if (found != null)
+                pausePanel = found;
+        }
+
+        if (pausePanel == null)
+        {
+            Debug.LogError("PauseMenu: pausePanel is not assigned. Assign it in the inspector.", this);
+            enabled = false;
+            return;
+        }
+    }
+
     void Start()
     {
-        if (pausePanel != null)
-            pausePanel.SetActive(false);
+        pausePanel.SetActive(false);
     }
 
     void OnEnable()
@@ -44,6 +67,8 @@ public class PauseMenu : MonoBehaviour
 
     public void Pause()
     {
+        if (pausePanel == null)
+            return;
         pausePanel.SetActive(true);
         Time.timeScale = 0f;
         isPaused = true;
@@ -51,6 +76,8 @@ public class PauseMenu : MonoBehaviour
 
     public void Resume()
     {
+        if (pausePanel == null)
+            return;
         pausePanel.SetActive(false);
         Time.timeScale = 1f;
         isPaused = false;
