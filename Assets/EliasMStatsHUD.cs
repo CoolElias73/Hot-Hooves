@@ -39,7 +39,7 @@ public class EliasMStatsHUD : MonoBehaviour
 
         float heightValue = player != null ? player.transform.position.y : 0f;
         if (heightFromStart)
-            heightValue -= _startY;
+            heightValue = Mathf.Max(0f, heightValue - _startY);
 
         float jumpForceValue = player != null ? player.jumpForceAdded : 0f;
 
@@ -76,6 +76,12 @@ public class EliasMStatsHUD : MonoBehaviour
         lavaText = tmpText;
         if (lavaText != null)
             lavaText.text = string.Empty;
+    }
+
+    public void HideMainStats()
+    {
+        if (text != null)
+            text.enabled = false;
     }
 
     private void UpdateLavaText()
