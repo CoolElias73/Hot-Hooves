@@ -3,16 +3,12 @@ using UnityEngine.InputSystem;
 
 public class Movements : MonoBehaviour
 {
-    public float speed = 8f;
-    public float jumpForce = 25f;
+    public float speed = 10f;
+    public float jumpForce = 33f;
     public float doubleJumpForce = 22f;
     public float groundDistance = 1.1f;
-    public float groundAcceleration = 1000f;
-    public float groundDeceleration = 1000f;
     public float iceAcceleration = 30f;
     public float iceDeceleration = 5f;
-    public float airAcceleration = 600f;
-    public float airDeceleration = 800f;
     public Vector3 scale;
     public float coyoteTime = 0.15f;
     public AudioSource audioSource;
@@ -86,24 +82,18 @@ public class Movements : MonoBehaviour
 
     void FixedUpdate()
     {
-        float targetSpeed = horizontal * speed;
-        bool grounded = IsGrounded();
-        bool onIce = grounded && IsOnIce();
-        float accel = 0f;
-
-        if (grounded)
+        bool onIce = IsOnIce();
+        if (onIce)
         {
-            accel = horizontal != 0
-                ? (onIce ? iceAcceleration : groundAcceleration)
-                : (onIce ? iceDeceleration : groundDeceleration);
+            float targetSpeed = horizontal * speed;
+            float accel = horizontal != 0 ? iceAcceleration : iceDeceleration;
+            float newX = Mathf.MoveTowards(rb.linearVelocity.x, targetSpeed, accel * Time.fixedDeltaTime);
+            rb.linearVelocity = new Vector2(newX, rb.linearVelocity.y);
         }
         else
         {
-            accel = horizontal != 0 ? airAcceleration : airDeceleration;
+            rb.linearVelocity = new Vector2(horizontal * speed, rb.linearVelocity.y);
         }
-
-        float newX = Mathf.MoveTowards(rb.linearVelocity.x, targetSpeed, accel * Time.fixedDeltaTime);
-        rb.linearVelocity = new Vector2(newX, rb.linearVelocity.y);
     }
 
     bool IsGrounded()
