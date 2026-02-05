@@ -167,6 +167,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6314760012262530363, guid: ad9520d7235d7ea43aea321087b080bf, type: 3}
+      propertyPath: speedUpDuration
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6314760012262530363, guid: ad9520d7235d7ea43aea321087b080bf, type: 3}
+      propertyPath: timeBeforeSpeedUp
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6314760012262530363, guid: ad9520d7235d7ea43aea321087b080bf, type: 3}
+      propertyPath: pitchIncreaseAmount
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 6314760012262530363, guid: ad9520d7235d7ea43aea321087b080bf, type: 3}
+      propertyPath: increaseEverySeconds
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 8032137929024592547, guid: ad9520d7235d7ea43aea321087b080bf, type: 3}
       propertyPath: m_Name
       value: Background_music
@@ -296,6 +312,26 @@ PrefabInstance:
     - target: {fileID: 5638867816341187124, guid: ede44678776284947ba23addacd870e0, type: 3}
       propertyPath: riseSpeed
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5638867816341187124, guid: ede44678776284947ba23addacd870e0, type: 3}
+      propertyPath: boostedRiseSpeed
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5638867816341187124, guid: ede44678776284947ba23addacd870e0, type: 3}
+      propertyPath: speedIncreaseAmount
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5638867816341187124, guid: ede44678776284947ba23addacd870e0, type: 3}
+      propertyPath: speedUpAfterSeconds
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5638867816341187124, guid: ede44678776284947ba23addacd870e0, type: 3}
+      propertyPath: changeSpeedEverySeconds
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5638867816341187124, guid: ede44678776284947ba23addacd870e0, type: 3}
+      propertyPath: speedIncreaseEverySeconds
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8430555568574013580, guid: ede44678776284947ba23addacd870e0, type: 3}
       propertyPath: m_Name
@@ -473,10 +509,6 @@ PrefabInstance:
     - target: {fileID: 1077749574588359210, guid: 23d06e67f74ed014a8507f5d4cde379c, type: 3}
       propertyPath: m_Name
       value: Goat
-      objectReference: {fileID: 0}
-    - target: {fileID: 1077749574588359210, guid: 23d06e67f74ed014a8507f5d4cde379c, type: 3}
-      propertyPath: m_TagString
-      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 6204267782679157156, guid: 23d06e67f74ed014a8507f5d4cde379c, type: 3}
       propertyPath: m_LocalPosition.x

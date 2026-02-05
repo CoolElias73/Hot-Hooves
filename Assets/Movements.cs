@@ -1,13 +1,24 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class SimpleMovement : MonoBehaviour
+public class Movements : MonoBehaviour
 {
     public float speed = 8f;
     public float jumpForce = 25f;
+    public float doubleJumpForce = 22f;
     public float groundDistance = 1.1f;
+    public float groundAcceleration = 1000f;
+    public float groundDeceleration = 1000f;
+    public float iceAcceleration = 30f;
+    public float iceDeceleration = 5f;
+    public float airAcceleration = 600f;
+    public float airDeceleration = 800f;
     public Vector3 scale;
     public float coyoteTime = 0.15f;
+    public AudioSource audioSource;
+    public AudioClip jumpClip;
+    public float normalJumpPitch = 1f;
+    public float doubleJumpPitch = 1.5f;
 
     private Rigidbody2D rb;
     private SpriteRenderer sr;
@@ -24,6 +35,8 @@ public class SimpleMovement : MonoBehaviour
         scale = new Vector3(1, 1, 1);
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
+        if (audioSource == null)
+            audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -55,11 +68,15 @@ public class SimpleMovement : MonoBehaviour
                 {
                     rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
                     coyoteTimeCounter = 0f;
+                    SetJumpPitch(normalJumpPitch);
+                    PlayJumpSound();
                 }
                 else if (canDoubleJump)
                 {
-                    rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+                    rb.linearVelocity = new Vector2(rb.linearVelocity.x, doubleJumpForce);
                     canDoubleJump = false;
+                    SetJumpPitch(doubleJumpPitch);
+                    PlayJumpSound();
                 }
             }
 
@@ -69,11 +86,64 @@ public class SimpleMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        rb.linearVelocity = new Vector2(horizontal * speed, rb.linearVelocity.y);
+        float targetSpeed = horizontal * speed;
+        bool grounded = IsGrounded();
+        bool onIce = grounded && IsOnIce();
+        float accel = 0f;
+
+        if (grounded)
+        {
+            accel = horizontal != 0
+                ? (onIce ? iceAcceleration : groundAcceleration)
+                : (onIce ? iceDeceleration : groundDeceleration);
+        }
+        else
+        {
+            accel = horizontal != 0 ? airAcceleration : airDeceleration;
+        }
+
+        float newX = Mathf.MoveTowards(rb.linearVelocity.x, targetSpeed, accel * Time.fixedDeltaTime);
+        rb.linearVelocity = new Vector2(newX, rb.linearVelocity.y);
     }
 
     bool IsGrounded()
     {
-        return Physics2D.Raycast(rightPoint.position, Vector2.down, groundDistance, groundMask) || Physics2D.Raycast(leftPoint.position, Vector2.down, groundDistance, groundMask);
+        return TryGetGroundHit(out _);
+    }
+
+    bool IsOnIce()
+    {
+        if (!TryGetGroundHit(out RaycastHit2D hit))
+            return false;
+
+        return hit.collider != null && hit.collider.GetComponent<IceSurface>() != null;
+    }
+
+    bool TryGetGroundHit(out RaycastHit2D hit)
+    {
+        hit = Physics2D.Raycast(rightPoint.position, Vector2.down, groundDistance, groundMask);
+        if (hit.collider != null)
+            return true;
+
+        hit = Physics2D.Raycast(leftPoint.position, Vector2.down, groundDistance, groundMask);
+        return hit.collider != null;
+    }
+
+    void PlayJumpSound()
+    {
+        if (audioSource != null && jumpClip != null)
+            audioSource.PlayOneShot(jumpClip);
+    }
+
+    void SetJumpPitch(float pitch)
+    {
+        if (audioSource != null)
+            audioSource.pitch = pitch;
+    }
+
+    public void IncreaseStats(float speedIncrease, float jumpIncrease)
+    {
+        speed += speedIncrease;
+        jumpForce += jumpIncrease;
     }
 }

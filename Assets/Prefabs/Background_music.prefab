@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2140255104851647696}
   - component: {fileID: 8491135110026950846}
+  - component: {fileID: 6314760012262530363}
   m_Layer: 0
   m_Name: Background_music
   m_TagString: Untagged
@@ -129,3 +130,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6314760012262530363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8032137929024592547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6723ef5ac76b6c4bb678f79ffd2511c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BackgroundMusicTime
+  audioSource: {fileID: 8491135110026950846}
+  timeBeforeSpeedUp: 20
+  pitchIncreaseAmount: 0.1
+  increaseEverySeconds: 20
+  speedUpDuration: 4
