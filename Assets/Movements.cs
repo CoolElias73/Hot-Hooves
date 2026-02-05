@@ -9,6 +9,8 @@ public class Movements : MonoBehaviour
     public float groundDistance = 1.1f;
     public float iceAcceleration = 30f;
     public float iceDeceleration = 5f;
+    public float iceSpeedDrag = 0.2f;
+    public float iceTurnAcceleration = 8f;
     public Vector3 scale;
     public float coyoteTime = 0.15f;
     public AudioSource audioSource;
@@ -87,7 +89,12 @@ public class Movements : MonoBehaviour
         {
             float targetSpeed = horizontal * speed;
             float accel = horizontal != 0 ? iceAcceleration : iceDeceleration;
+            if (horizontal != 0 && Mathf.Sign(rb.linearVelocity.x) != Mathf.Sign(targetSpeed) && Mathf.Abs(rb.linearVelocity.x) > 0.01f)
+                accel = iceTurnAcceleration;
             float newX = Mathf.MoveTowards(rb.linearVelocity.x, targetSpeed, accel * Time.fixedDeltaTime);
+            float speedDrag = Mathf.Abs(newX) * iceSpeedDrag * Time.fixedDeltaTime;
+            if (horizontal == 0)
+                newX = Mathf.MoveTowards(newX, 0f, speedDrag);
             rb.linearVelocity = new Vector2(newX, rb.linearVelocity.y);
         }
         else
