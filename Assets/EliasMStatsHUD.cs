@@ -57,9 +57,9 @@ public class EliasMStatsHUD : MonoBehaviour
     private void ResolveReferences()
     {
         if (player == null)
-            player = FindObjectOfType<Movements>();
+            player = FindFirstObjectByType<Movements>();
         if (lava == null)
-            lava = FindObjectOfType<RisingLava>();
+            lava = FindFirstObjectByType<RisingLava>();
 
         if (player != null)
         {
@@ -120,7 +120,7 @@ public class EliasMStatsHUD : MonoBehaviour
         if (SceneManager.GetActiveScene().name != "EliasM")
             return;
 
-        if (FindObjectOfType<EliasMStatsHUD>() != null)
+        if (FindFirstObjectByType<EliasMStatsHUD>() != null)
             return;
 
         var canvasGo = new GameObject("EliasM_StatsCanvas");
@@ -144,7 +144,7 @@ public class EliasMStatsHUD : MonoBehaviour
         var tmp = textGo.AddComponent<TextMeshProUGUI>();
         tmp.fontSize = 24f;
         tmp.alignment = TextAlignmentOptions.TopRight;
-        tmp.enableWordWrapping = false;
+        tmp.textWrappingMode = TextWrappingModes.NoWrap;
         tmp.text = "Height: 0\nJump force gained: 0";
 
         var lavaTextGo = new GameObject("EliasM_LavaText");
@@ -160,12 +160,12 @@ public class EliasMStatsHUD : MonoBehaviour
         var lavaTmp = lavaTextGo.AddComponent<TextMeshProUGUI>();
         lavaTmp.fontSize = 36f;
         lavaTmp.alignment = TextAlignmentOptions.Bottom;
-        lavaTmp.enableWordWrapping = false;
+        lavaTmp.textWrappingMode = TextWrappingModes.NoWrap;
         lavaTmp.text = string.Empty;
         lavaTmp.enabled = false;
 
         var hud = textGo.AddComponent<EliasMStatsHUD>();
-        hud.Initialize(tmp, FindObjectOfType<Movements>(), FindObjectOfType<RisingLava>(), new Vector2(20f, 20f));
+        hud.Initialize(tmp, FindFirstObjectByType<Movements>(), FindFirstObjectByType<RisingLava>(), new Vector2(20f, 20f));
         hud.InitializeLavaText(lavaTmp);
     }
 }
