@@ -144,6 +144,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BackgroundMusicTime
   audioSource: {fileID: 8491135110026950846}
   timeBeforeSpeedUp: 20
-  pitchIncreaseAmount: 0.1
+  pitchIncreaseAmount: 0.02
   increaseEverySeconds: 20
-  speedUpDuration: 4
+  speedUpDuration: 0

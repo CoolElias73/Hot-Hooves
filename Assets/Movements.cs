@@ -17,6 +17,7 @@ public class Movements : MonoBehaviour
     public AudioClip jumpClip;
     public float normalJumpPitch = 1f;
     public float doubleJumpPitch = 1.5f;
+    public float jumpForceAdded;
 
     private Rigidbody2D rb;
     private SpriteRenderer sr;
@@ -142,5 +143,6 @@ public class Movements : MonoBehaviour
     {
         speed += speedIncrease;
         jumpForce += jumpIncrease;
+        jumpForceAdded += jumpIncrease;
     }
 }
