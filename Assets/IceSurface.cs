@@ -3,7 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(Collider2D))]
 public class IceSurface : MonoBehaviour
 {
-    [Range(0f, 1f)] public float friction = 0.02f;
+    [Range(0f, 1f)] public float friction = 0f;
     [Range(0f, 1f)] public float bounciness = 0f;
 
     [SerializeField, HideInInspector] private PhysicsMaterial2D runtimeMaterial;
