@@ -81,7 +81,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
+  m_Sprite: {fileID: -1267212731262974484, guid: d64b19b65e616ab42b189ceb57ee24fb, type: 3}
   m_Color: {r: 0.37313163, g: 0.27896425, b: 0.9748427, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -129,8 +129,8 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.28866667}
-    oldSize: {x: 1, y: 1}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.6, y: 1.6}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -156,3 +156,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Powerup
   speedIncrease: 0.5
   jumpIncrease: 2
+  pickupSound: {fileID: 8300000, guid: 9ed423cbddbe89d45b018881d39d83d3, type: 3}
