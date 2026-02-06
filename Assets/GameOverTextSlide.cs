@@ -131,16 +131,17 @@ public class GameOverTextSlide : MonoBehaviour
         if (_hasStartY)
             endHeight -= _playerStartY;
 
-        float best = PlayerPrefs.GetFloat(highscoreKey, endHeight);
+        float best = PlayerPrefs.GetFloat(highscoreKey, 0f);
         if (endHeight > best)
         {
             best = endHeight;
             PlayerPrefs.SetFloat(highscoreKey, best);
+            PlayerPrefs.Save();
         }
 
         if (highscoreText != null)
         {
-            highscoreText.text = $"Highscore: {best:0.0} m";
+            highscoreText.text = $"Your score: {endHeight:0.0} m\nHighscore: {best:0.0} m";
             highscoreText.enabled = false;
         }
     }
