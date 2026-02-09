@@ -280,6 +280,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed86b1e46b456fa438fb6cb5b1fe2f28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RisingLava
-  riseSpeed: 4
+  riseSpeed: 2
   speedIncreaseEverySeconds: 20
   speedIncreaseAmount: 2
+  stopAtCameraTop: 1
