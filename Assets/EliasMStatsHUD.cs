@@ -12,6 +12,7 @@ public class EliasMStatsHUD : MonoBehaviour
 
     private float _startY;
     private float _nextUpdate;
+    private PassThroughPlatformsEffect _passThrough;
 
     void Awake()
     {
@@ -43,9 +44,20 @@ public class EliasMStatsHUD : MonoBehaviour
 
         float jumpForceValue = player != null ? player.jumpForceAdded : 0f;
 
-        text.text =
+        string hudText =
             $"Height: {heightValue:0.0} m\n" +
             $"Jump force gained: {jumpForceValue:0.0}";
+
+        if (_passThrough == null && player != null)
+            _passThrough = player.GetComponent<PassThroughPlatformsEffect>();
+
+        if (_passThrough != null && _passThrough.IsActive)
+        {
+            float remaining = _passThrough.TimeRemaining;
+            hudText += $"\nPassthrough: {remaining:0.0}s";
+        }
+
+        text.text = hudText;
 
         UpdateLavaText();
     }
@@ -60,6 +72,8 @@ public class EliasMStatsHUD : MonoBehaviour
         if (player != null)
         {
             _startY = player.transform.position.y;
+            if (_passThrough == null)
+                _passThrough = player.GetComponent<PassThroughPlatformsEffect>();
         }
     }
 

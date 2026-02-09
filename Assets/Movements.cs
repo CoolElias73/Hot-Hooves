@@ -18,12 +18,14 @@ public class Movements : MonoBehaviour
     public float normalJumpPitch = 1f;
     public float doubleJumpPitch = 1.5f;
     public float jumpForceAdded;
+    public Sprite goatCitronStanding;
 
     private Rigidbody2D rb;
     private SpriteRenderer sr;
     private float horizontal;
     private bool canDoubleJump = true;
     private float coyoteTimeCounter;
+    private Sprite defaultSprite;
 
     public LayerMask groundMask;
     public Transform rightPoint;
@@ -34,6 +36,7 @@ public class Movements : MonoBehaviour
         scale = new Vector3(1, 1, 1);
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
+        defaultSprite = sr.sprite;
         if (audioSource == null)
             audioSource = GetComponent<AudioSource>();
     }
@@ -51,7 +54,8 @@ public class Movements : MonoBehaviour
             else if (horizontal > 0)
                 scale.x = 1;
 
-            if (IsGrounded())
+            bool grounded = IsGrounded();
+            if (grounded)
             {
                 coyoteTimeCounter = coyoteTime;
                 canDoubleJump = true;
@@ -59,6 +63,15 @@ public class Movements : MonoBehaviour
             else
             {
                 coyoteTimeCounter -= Time.deltaTime;
+            }
+
+            if (!grounded && goatCitronStanding != null)
+            {
+                sr.sprite = goatCitronStanding;
+            }
+            else if (grounded && sr.sprite == goatCitronStanding)
+            {
+                sr.sprite = defaultSprite;
             }
 
             if (Keyboard.current.spaceKey.wasPressedThisFrame)

@@ -112,18 +112,18 @@ MonoBehaviour:
   jumpForce: 33
   doubleJumpForce: 22
   groundDistance: 1.1
-  groundAcceleration: 1000
-  groundDeceleration: 1000
   iceAcceleration: 1000
   iceDeceleration: 5
-  airAcceleration: 1000
-  airDeceleration: 5
+  iceSpeedDrag: 0.2
+  iceTurnAcceleration: 8
   scale: {x: 0, y: 0, z: 0}
   coyoteTime: 0.15
   audioSource: {fileID: 6549769600134692837}
   jumpClip: {fileID: 8300000, guid: 6754da62f5e3b3e4b98ba25f8aa13947, type: 3}
   normalJumpPitch: 1
   doubleJumpPitch: 1.5
+  jumpForceAdded: 0
+  goatCitronStanding: {fileID: 2331139290770223795, guid: b77788c13d3140044ba132b54b136cea, type: 3}
   groundMask:
     serializedVersion: 2
     m_Bits: 64

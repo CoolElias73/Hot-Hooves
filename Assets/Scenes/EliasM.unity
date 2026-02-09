@@ -875,6 +875,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: PowerUp
       objectReference: {fileID: 0}
+    - target: {fileID: 4888924188454061038, guid: 6e74595b96e61eb4fbc10ba47993c608, type: 3}
+      propertyPath: spawnCenter
+      value: 
+      objectReference: {fileID: 914485783}
+    - target: {fileID: 4888924188454061038, guid: 6e74595b96e61eb4fbc10ba47993c608, type: 3}
+      propertyPath: spawnRangeY
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 4888924188454061038, guid: 6e74595b96e61eb4fbc10ba47993c608, type: 3}
+      propertyPath: spawnInterval
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
