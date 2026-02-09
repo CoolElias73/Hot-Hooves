@@ -45,6 +45,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PowerupSpawner
   powerupPrefab: {fileID: 7612149602343299373, guid: 86a7bc8e6e9aca649bcf4d05866158c9, type: 3}
+  powerupPrefabs:
+  - {fileID: 7612149602343299373, guid: 86a7bc8e6e9aca649bcf4d05866158c9, type: 3}
+  - {fileID: 7612149602343299373, guid: b4c1d0e7ad0e4a0d8e4a4b1d6c16c1d2, type: 3}
   spawnRangeX: 8
   spawnRangeY: 2500
   spawnInterval: 4
