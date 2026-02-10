@@ -154,5 +154,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de6b3b3aa43760443a7369abfa99e38d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PassThroughPlatformsPowerup
+  spawnWeight: 1
   effectDuration: 20
   pickupSound: {fileID: 8300000, guid: 9ed423cbddbe89d45b018881d39d83d3, type: 3}

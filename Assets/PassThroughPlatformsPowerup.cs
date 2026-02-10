@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class PassThroughPlatformsPowerup : MonoBehaviour
 {
+    [Header("Spawn")]
+    [Min(0f)] public float spawnWeight = 1f;
+
     [Min(0f)]
     public float effectDuration = 6f;
     public AudioClip pickupSound;

@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class Powerup : MonoBehaviour
 {
+    [Header("Spawn")]
+    [Min(0f)] public float spawnWeight = 1f;
+
     public float speedIncrease = 1f;
     public float jumpIncrease = 2f;
 
