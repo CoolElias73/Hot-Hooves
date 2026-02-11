@@ -158,4 +158,16 @@ public class Movements : MonoBehaviour
         jumpForce += jumpIncrease;
         jumpForceAdded += jumpIncrease;
     }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Platform"))
+        {
+            collision.gameObject.GetComponent<ImpactShake>()?.Shake();
+        }
+    }
+   
+
+    
+
 }
