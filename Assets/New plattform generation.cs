@@ -29,9 +29,16 @@ public class platformGenerator : MonoBehaviour
     public float spawnAheadDistance = 6f;
 
     private float currentY;
+    private float _easyBChance;
+    private float _easyCChance;
+    private int _difficulty;
 
     void Start()
     {
+        _easyBChance = platformBChance;
+        _easyCChance = platformCChance;
+        RefreshDifficulty();
+
         currentY = transform.position.y;
 
         for (int i = 0; i < platformCount; i++)
@@ -40,8 +47,34 @@ public class platformGenerator : MonoBehaviour
         }
     }
 
+    private void RefreshDifficulty()
+    {
+        int difficulty = PlayerPrefs.GetInt("Difficulty", 1);
+        if (difficulty == _difficulty)
+            return;
+
+        _difficulty = difficulty;
+        switch (difficulty)
+        {
+            case 1:
+                platformBChance = 0.4f;
+                platformCChance = 0.1f;
+                break;
+            case 2:
+                platformBChance = 0.75f;
+                platformCChance = 0.2f;
+                break;
+            default:
+                platformBChance = _easyBChance;
+                platformCChance = _easyCChance;
+                break;
+        }
+    }
+
     void Update()
     {
+        RefreshDifficulty();
+
         if (player != null && player.position.y + spawnAheadDistance > currentY)
         {
             SpawnPlatform();
