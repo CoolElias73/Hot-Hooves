@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2528426179495290477}
   - component: {fileID: 7891689804548516186}
-  - component: {fileID: 1557244726528295178}
   m_Layer: 0
   m_Name: comic cloud -citron_0
   m_TagString: Untagged
@@ -79,7 +78,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: -4804041255271383428, guid: ada9048e73abe284bab3509e92d78a48, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -91,23 +90,3 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1557244726528295178
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5863190706593039687}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a047c59fee0c1594b919bf3c409e3daf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlatformGenerator
-  platformPrefab: {fileID: 5863190706593039687}
-  minX: -14
-  maxX: 13
-  minYGap: 7.5
-  maxYGap: 15
-  platformCount: 5
-  player: {fileID: 0}
-  spawnAheadDistance: 6
