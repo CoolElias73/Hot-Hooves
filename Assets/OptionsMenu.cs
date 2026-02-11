@@ -22,6 +22,15 @@ public class OptionsMenu : MonoBehaviour
     public void SetDifficulty(int difficulty)
     {
         PlayerPrefs.SetInt("Difficulty", difficulty);
+        PlayerPrefs.Save();
+    }
+
+    public void ApplyCurrentSettings()
+    {
+        if (difficultyDropdown != null)
+            SetDifficulty(difficultyDropdown.value);
+        else
+            PlayerPrefs.Save();
     }
 
     public void CloseOptions()
