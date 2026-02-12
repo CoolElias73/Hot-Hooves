@@ -16,6 +16,8 @@ public class StatsHUDSpawner : MonoBehaviour
     [SerializeField] private float mainMenuFontSize = 75f;
     [SerializeField] private float gameOverOffscreenPadding = 80f;
     [SerializeField] private int canvasSortingOrder = 1000;
+    [SerializeField] private Vector2 referenceResolution = new Vector2(1920f, 1080f);
+    [SerializeField, Range(0f, 1f)] private float matchWidthOrHeight = 1f;
 
     [Header("Behavior")]
     [SerializeField] private bool spawnOnAwake = true;
@@ -36,9 +38,13 @@ public class StatsHUDSpawner : MonoBehaviour
         var canvasGo = new GameObject("StatsHUD_Canvas");
         var canvas = canvasGo.AddComponent<Canvas>();
         canvas.renderMode = RenderMode.ScreenSpaceOverlay;
+        canvas.overrideSorting = true;
         canvas.sortingOrder = canvasSortingOrder;
 
-        canvasGo.AddComponent<CanvasScaler>();
+        var scaler = canvasGo.AddComponent<CanvasScaler>();
+        scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
+        scaler.referenceResolution = referenceResolution;
+        scaler.matchWidthOrHeight = matchWidthOrHeight;
         canvasGo.AddComponent<GraphicRaycaster>();
 
         var textGo = new GameObject("StatsHUD_Text");
@@ -56,6 +62,8 @@ public class StatsHUDSpawner : MonoBehaviour
         tmp.alignment = TextAlignmentOptions.TopRight;
         tmp.textWrappingMode = TextWrappingModes.NoWrap;
         tmp.text = "Height: 0 m\nJump force gained: 0";
+        tmp.color = Color.white;
+        tmp.enabled = true;
 
         var lavaTextGo = new GameObject("StatsHUD_LavaText");
         lavaTextGo.transform.SetParent(canvasGo.transform, false);
