@@ -55,6 +55,8 @@ MonoBehaviour:
   mainMenuFontSize: 75
   gameOverOffscreenPadding: 80
   canvasSortingOrder: 1000
+  referenceResolution: {x: 1920, y: 1080}
+  matchWidthOrHeight: 1
   spawnOnAwake: 1
   preventDuplicates: 1
   showLavaSpeed: 0
