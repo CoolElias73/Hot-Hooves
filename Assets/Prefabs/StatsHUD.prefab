@@ -50,6 +50,11 @@ MonoBehaviour:
   bottomSize: {x: 520, y: 90}
   topRightFontSize: 24
   bottomFontSize: 36
+  gameOverFontSize: 64
+  highscoreFontSize: 32
+  mainMenuFontSize: 75
+  gameOverOffscreenPadding: 80
   canvasSortingOrder: 1000
   spawnOnAwake: 1
   preventDuplicates: 1
+  showLavaSpeed: 0

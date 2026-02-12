@@ -20,6 +20,7 @@ public class StatsHUDSpawner : MonoBehaviour
     [Header("Behavior")]
     [SerializeField] private bool spawnOnAwake = true;
     [SerializeField] private bool preventDuplicates = true;
+    [SerializeField] private bool showLavaSpeed = true;
 
     void Awake()
     {
@@ -209,5 +210,6 @@ public class StatsHUDSpawner : MonoBehaviour
         var hud = textGo.AddComponent<EliasMStatsHUD>();
         hud.Initialize(tmp, FindFirstObjectByType<Movements>(), FindFirstObjectByType<RisingLava>());
         hud.InitializeLavaText(lavaTmp);
+        hud.SetShowLavaSpeed(showLavaSpeed);
     }
 }
