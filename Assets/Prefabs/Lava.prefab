@@ -282,14 +282,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RisingLava
   riseSpeed: 2
-  speedIncreaseEverySeconds: 20
+  speedIncreaseEverySeconds: 15
   speedIncreaseAmount: 2
   stopAtCameraTop: 1
   slowDownWhenInView: 1
-  viewResetSpeed: 3
-  viewResetStep: 0.5
-  viewResetCooldown: 10
-  viewResetTriggerOffset: 1
+  viewResetSpeed: 4
+  viewResetStep: 0.25
+  viewResetCooldown: 5
+  viewResetTriggerOffset: 1.5
 --- !u!50 &-8319468972321232097
 Rigidbody2D:
   serializedVersion: 5
