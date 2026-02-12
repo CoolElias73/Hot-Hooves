@@ -354,18 +354,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5638867816341187124, guid: ede44678776284947ba23addacd870e0, type: 3}
-      propertyPath: viewResetStep
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5638867816341187124, guid: ede44678776284947ba23addacd870e0, type: 3}
-      propertyPath: viewResetSpeed
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5638867816341187124, guid: ede44678776284947ba23addacd870e0, type: 3}
-      propertyPath: viewResetMaxSpeed
-      value: 6
-      objectReference: {fileID: 0}
     - target: {fileID: 8430555568574013580, guid: ede44678776284947ba23addacd870e0, type: 3}
       propertyPath: m_Name
       value: Lava
