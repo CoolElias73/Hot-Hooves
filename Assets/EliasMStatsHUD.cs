@@ -9,6 +9,7 @@ public class EliasMStatsHUD : MonoBehaviour
     [SerializeField] private TMP_Text lavaText;
     [SerializeField] private float updateInterval = 0.1f;
     [SerializeField] private bool heightFromStart = true;
+    [SerializeField] private bool showLavaSpeed = true;
 
     private float _startY;
     private float _nextUpdate;
@@ -50,6 +51,11 @@ public class EliasMStatsHUD : MonoBehaviour
 
         if (_passThrough == null && player != null)
             _passThrough = player.GetComponent<PassThroughPlatformsEffect>();
+
+        if (showLavaSpeed && lava != null)
+        {
+            hudText += $"\nLava speed: {lava.CurrentSpeed:0.0}";
+        }
 
         if (_passThrough != null && _passThrough.IsActive)
         {
@@ -96,6 +102,11 @@ public class EliasMStatsHUD : MonoBehaviour
     {
         if (text != null)
             text.enabled = false;
+    }
+
+    public void SetShowLavaSpeed(bool value)
+    {
+        showLavaSpeed = value;
     }
 
     private void UpdateLavaText()

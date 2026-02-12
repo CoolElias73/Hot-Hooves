@@ -19,6 +19,8 @@ public class Movements : MonoBehaviour
     public float doubleJumpPitch = 1.5f;
     public float jumpForceAdded;
     public Sprite goatCitronStanding;
+    public bool noclipFly = false;
+    public float flySpeed = 10f;
 
     private Rigidbody2D rb;
     private SpriteRenderer sr;
@@ -26,6 +28,10 @@ public class Movements : MonoBehaviour
     private bool canDoubleJump = true;
     private float coyoteTimeCounter;
     private Sprite defaultSprite;
+    private bool _noclipActive;
+    private float _savedGravity;
+    private bool _savedColliderEnabled;
+    private Collider2D _playerCollider;
 
     public LayerMask groundMask;
     public Transform rightPoint;
@@ -36,6 +42,7 @@ public class Movements : MonoBehaviour
         scale = new Vector3(1, 1, 1);
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
+        _playerCollider = GetComponent<Collider2D>();
         defaultSprite = sr.sprite;
         if (audioSource == null)
             audioSource = GetComponent<AudioSource>();
@@ -49,10 +56,15 @@ public class Movements : MonoBehaviour
                 (Keyboard.current.aKey.isPressed || Keyboard.current.leftArrowKey.isPressed ? -1 : 0) +
                 (Keyboard.current.dKey.isPressed || Keyboard.current.rightArrowKey.isPressed ? 1 : 0);
 
+            if (Keyboard.current.vKey.wasPressedThisFrame)
+                noclipFly = !noclipFly;
+
             if (horizontal < 0)
                 scale.x = -1;
             else if (horizontal > 0)
                 scale.x = 1;
+
+            UpdateNoclipState();
 
             bool grounded = IsGrounded();
             if (grounded)
@@ -74,7 +86,7 @@ public class Movements : MonoBehaviour
                 sr.sprite = defaultSprite;
             }
 
-            if (Keyboard.current.spaceKey.wasPressedThisFrame)
+            if (!_noclipActive && Keyboard.current.spaceKey.wasPressedThisFrame)
             {
                 if (coyoteTimeCounter > 0f)
                 {
@@ -98,6 +110,19 @@ public class Movements : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (_noclipActive)
+        {
+            float vertical =
+                (Keyboard.current != null && (Keyboard.current.wKey.isPressed || Keyboard.current.upArrowKey.isPressed) ? 1 : 0) +
+                (Keyboard.current != null && (Keyboard.current.sKey.isPressed || Keyboard.current.downArrowKey.isPressed) ? -1 : 0);
+
+            bool boost = Keyboard.current != null &&
+                (Keyboard.current.leftShiftKey.isPressed || Keyboard.current.rightShiftKey.isPressed);
+            float moveSpeed = (flySpeed > 0f ? flySpeed : speed) * (boost ? 2f : 1f);
+            rb.linearVelocity = new Vector2(horizontal * moveSpeed, vertical * moveSpeed);
+            return;
+        }
+
         bool onIce = IsOnIce();
         if (onIce)
         {
@@ -150,6 +175,27 @@ public class Movements : MonoBehaviour
     {
         if (audioSource != null)
             audioSource.pitch = pitch;
+    }
+
+    void UpdateNoclipState()
+    {
+        if (noclipFly && !_noclipActive)
+        {
+            _noclipActive = true;
+            _savedGravity = rb.gravityScale;
+            _savedColliderEnabled = _playerCollider != null ? _playerCollider.enabled : false;
+            rb.gravityScale = 0f;
+            rb.linearVelocity = Vector2.zero;
+            if (_playerCollider != null)
+                _playerCollider.enabled = false;
+        }
+        else if (!noclipFly && _noclipActive)
+        {
+            _noclipActive = false;
+            rb.gravityScale = _savedGravity;
+            if (_playerCollider != null)
+                _playerCollider.enabled = _savedColliderEnabled;
+        }
     }
 
     public void IncreaseStats(float speedIncrease, float jumpIncrease)

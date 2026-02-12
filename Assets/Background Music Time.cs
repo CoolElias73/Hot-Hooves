@@ -3,52 +3,31 @@ using UnityEngine;
 public class BackgroundMusicTime : MonoBehaviour
 {
     [SerializeField] private AudioSource audioSource;
-    [SerializeField] private float timeBeforeSpeedUp = 20f;
-    [SerializeField] private float pitchIncreaseAmount = 0.05f;
-    [SerializeField] private float increaseEverySeconds = 20f;
-    [SerializeField] private float speedUpDuration = 4f;
+    [SerializeField] private RisingLava lava;
+    [SerializeField] private bool syncToLavaSpeed = true;
+    [SerializeField] private float minLavaSpeed = 2f;
+    [SerializeField] private float maxLavaSpeed = 12f;
+    [SerializeField] private float minPitch = 0.85f;
+    [SerializeField] private float maxPitch = 1.25f;
+    [SerializeField] private float pitchLerpSpeed = 4f;
 
     void Start()
     {
         if (audioSource == null)
             audioSource = GetComponent<AudioSource>();
 
-        if (audioSource != null)
-            StartCoroutine(SpeedUpAfterDelay());
+        if (lava == null)
+            lava = FindFirstObjectByType<RisingLava>();
     }
 
-    private System.Collections.IEnumerator SpeedUpAfterDelay()
+    void Update()
     {
-        if (timeBeforeSpeedUp > 0f)
-            yield return new WaitForSeconds(timeBeforeSpeedUp);
+        if (!syncToLavaSpeed || audioSource == null || lava == null)
+            return;
 
-        while (true)
-        {
-            float startPitch = audioSource.pitch;
-            float targetPitch = startPitch + pitchIncreaseAmount;
-
-            if (speedUpDuration <= 0f)
-            {
-                audioSource.pitch = targetPitch;
-            }
-            else
-            {
-                float elapsed = 0f;
-                while (elapsed < speedUpDuration)
-                {
-                    elapsed += Time.deltaTime;
-                    float t = Mathf.Clamp01(elapsed / speedUpDuration);
-                    audioSource.pitch = Mathf.Lerp(startPitch, targetPitch, t);
-                    yield return null;
-                }
-
-                audioSource.pitch = targetPitch;
-            }
-
-            if (increaseEverySeconds > 0f)
-                yield return new WaitForSeconds(increaseEverySeconds);
-            else
-                yield return null;
-        }
+        float speed = lava.CurrentSpeed;
+        float t = Mathf.InverseLerp(minLavaSpeed, maxLavaSpeed, speed);
+        float targetPitch = Mathf.Lerp(minPitch, maxPitch, t);
+        audioSource.pitch = Mathf.Lerp(audioSource.pitch, targetPitch, pitchLerpSpeed * Time.deltaTime);
     }
 }
