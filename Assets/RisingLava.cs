@@ -12,7 +12,6 @@ public class RisingLava : MonoBehaviour
     public bool slowDownWhenInView = true;
     public float viewResetSpeed = 2.5f;
     public float viewResetStep = 0.25f;
-    public float viewResetMaxSpeed = 6f;
     public float viewResetCooldown = 0.5f;
     public float viewResetTriggerOffset = 1.5f;
 
@@ -20,6 +19,7 @@ public class RisingLava : MonoBehaviour
     float _nextIncreaseTime;
     float _nextViewResetTime;
     bool _wasInView;
+    float _nextResetSpeed;
 
     public event Action<Transform, float> PlayerTouched;
 
@@ -29,6 +29,7 @@ public class RisingLava : MonoBehaviour
     {
         _currentSpeed = riseSpeed;
         _nextIncreaseTime = Time.timeSinceLevelLoad + speedIncreaseEverySeconds;
+        _nextResetSpeed = viewResetSpeed;
     }
 
     void Update()
@@ -41,8 +42,8 @@ public class RisingLava : MonoBehaviour
         {
             if (inView && !_wasInView && Time.time >= _nextViewResetTime)
             {
-                _currentSpeed = viewResetSpeed;
-                viewResetSpeed = Mathf.Min(viewResetMaxSpeed, viewResetSpeed + viewResetStep);
+                _currentSpeed = _nextResetSpeed;
+                _nextResetSpeed += viewResetStep;
                 _nextIncreaseTime = Time.timeSinceLevelLoad + speedIncreaseEverySeconds;
                 _nextViewResetTime = Time.time + viewResetCooldown;
             }
