@@ -9,11 +9,14 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 0809b987b5704227b5c6de54270994d8
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
+    path: Assets/Scenes/Game Scene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 0
     path: Assets/Scenes/Emiliano,scene.unity
     guid: f4804690b7be1234f9445014527a0340
+  - enabled: 0
+    path: Assets/Scenes/EliasM.unity
+    guid: 58e02865ea7de634d8fd6e6d5d1b4f3e
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 3590b91b4603b465dbb4216d601bff33, type: 3}
   m_UseUCBPForAssetBundles: 0
