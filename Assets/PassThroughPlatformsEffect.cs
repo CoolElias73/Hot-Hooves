@@ -21,9 +21,15 @@ public class PassThroughPlatformsEffect : MonoBehaviour
     [Tooltip("Layers that should be treated as platforms (defaults to Ground + Default if unset).")]
     public LayerMask platformLayers;
 
+    [Header("Visuals")]
+    [Range(0.05f, 1f)]
+    public float translucentAlpha = 0.5f;
+
     private readonly HashSet<Collider2D> _ignored = new HashSet<Collider2D>();
     private Collider2D _playerCollider;
     private Rigidbody2D _rb;
+    private SpriteRenderer _renderer;
+    private float _defaultAlpha = 1f;
     private float _endTime;
     private bool _active;
 
@@ -43,6 +49,9 @@ public class PassThroughPlatformsEffect : MonoBehaviour
     {
         _playerCollider = GetComponent<Collider2D>();
         _rb = GetComponent<Rigidbody2D>();
+        _renderer = GetComponent<SpriteRenderer>();
+        if (_renderer != null)
+            _defaultAlpha = _renderer.color.a;
         if (platformLayers == 0)
             platformLayers = LayerMask.GetMask("Ground", "Default");
     }
@@ -59,6 +68,7 @@ public class PassThroughPlatformsEffect : MonoBehaviour
         _endTime = Time.time + duration;
         _active = true;
         enabled = true;
+        ApplyTranslucent(true);
     }
 
     void FixedUpdate()
@@ -74,6 +84,8 @@ public class PassThroughPlatformsEffect : MonoBehaviour
 
         RefreshIgnoredCollisions();
         IgnorePlatformsAboveWhenRising();
+
+        ApplyTranslucent(true);
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -229,6 +241,7 @@ public class PassThroughPlatformsEffect : MonoBehaviour
         }
 
         _ignored.Clear();
+        ApplyTranslucent(false);
         enabled = false;
     }
 
@@ -236,5 +249,15 @@ public class PassThroughPlatformsEffect : MonoBehaviour
     {
         if (_active)
             Deactivate();
+    }
+
+    private void ApplyTranslucent(bool active)
+    {
+        if (_renderer == null)
+            return;
+
+        Color color = _renderer.color;
+        color.a = active ? translucentAlpha : _defaultAlpha;
+        _renderer.color = color;
     }
 }

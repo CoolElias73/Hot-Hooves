@@ -36,6 +36,7 @@ public class Movements : MonoBehaviour
     private bool _savedColliderEnabled;
     private Collider2D _playerCollider;
     private Color _defaultColor;
+    private Color _jumpFlashReturnColor;
     private Coroutine _jumpFlashRoutine;
 
     public LayerMask groundMask;
@@ -219,14 +220,16 @@ public class Movements : MonoBehaviour
         if (_jumpFlashRoutine != null)
             StopCoroutine(_jumpFlashRoutine);
 
+        _jumpFlashReturnColor = sr.color;
         _jumpFlashRoutine = StartCoroutine(JumpPowerupFlashRoutine());
     }
 
     IEnumerator JumpPowerupFlashRoutine()
     {
-        sr.color = jumpPowerupColor;
+        float alpha = sr.color.a;
+        sr.color = new Color(jumpPowerupColor.r, jumpPowerupColor.g, jumpPowerupColor.b, alpha);
         yield return new WaitForSeconds(jumpPowerupFlashDuration);
-        sr.color = _defaultColor;
+        sr.color = _jumpFlashReturnColor;
         _jumpFlashRoutine = null;
     }
 
