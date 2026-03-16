@@ -5,6 +5,11 @@ public class MainMenu : MonoBehaviour
 {
     public GameObject optionsPanel;
 
+    void Awake()
+    {
+        TextThicknessUtility.ApplyBoldToAllTexts();
+    }
+
     public void PlayGame()
     {
         var optionsMenu = FindFirstObjectByType<OptionsMenu>();

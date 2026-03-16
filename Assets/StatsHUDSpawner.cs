@@ -8,9 +8,9 @@ public class StatsHUDSpawner : MonoBehaviour
     [SerializeField] private Vector2 topRightPadding = new Vector2(20f, 20f);
     [SerializeField] private Vector2 bottomPadding = new Vector2(0f, 20f);
     [SerializeField] private Vector2 topRightSize = new Vector2(360f, 120f);
-    [SerializeField] private Vector2 bottomSize = new Vector2(520f, 90f);
-    [SerializeField] private float topRightFontSize = 24f;
-    [SerializeField] private float bottomFontSize = 36f;
+    [SerializeField] private Vector2 bottomSize = new Vector2(700f, 120f);
+    [SerializeField] private float topRightFontSize = 30f;
+    [SerializeField] private float bottomFontSize = 64f;
     [SerializeField] private float gameOverFontSize = 64f;
     [SerializeField] private float highscoreFontSize = 32f;
     [SerializeField] private float mainMenuFontSize = 75f;
@@ -62,7 +62,7 @@ public class StatsHUDSpawner : MonoBehaviour
         tmp.alignment = TextAlignmentOptions.TopRight;
         tmp.textWrappingMode = TextWrappingModes.NoWrap;
         tmp.text = "Height: 0 m\nJump force gained: 0";
-        tmp.color = Color.white;
+        tmp.color = Color.black;
         tmp.enabled = true;
 
         var lavaTextGo = new GameObject("StatsHUD_LavaText");
@@ -80,6 +80,7 @@ public class StatsHUDSpawner : MonoBehaviour
         lavaTmp.alignment = TextAlignmentOptions.Bottom;
         lavaTmp.textWrappingMode = TextWrappingModes.NoWrap;
         lavaTmp.text = string.Empty;
+        lavaTmp.color = Color.black;
         lavaTmp.enabled = false;
 
         var gameOverGo = new GameObject("StatsHUD_GameOverText");
@@ -97,6 +98,7 @@ public class StatsHUDSpawner : MonoBehaviour
         gameOverTmp.alignment = TextAlignmentOptions.Center;
         gameOverTmp.textWrappingMode = TextWrappingModes.NoWrap;
         gameOverTmp.text = "Game Over";
+        gameOverTmp.color = Color.black;
         gameOverTmp.enabled = false;
 
         var highscoreGo = new GameObject("StatsHUD_HighscoreText");
@@ -114,6 +116,7 @@ public class StatsHUDSpawner : MonoBehaviour
         highscoreTmp.alignment = TextAlignmentOptions.Center;
         highscoreTmp.textWrappingMode = TextWrappingModes.NoWrap;
         highscoreTmp.text = "Highscore: 0 m";
+        highscoreTmp.color = Color.black;
         highscoreTmp.enabled = false;
 
         var buttonGo = new GameObject("StatsHUD_MainMenuButton");
@@ -219,5 +222,7 @@ public class StatsHUDSpawner : MonoBehaviour
         hud.Initialize(tmp, FindFirstObjectByType<Movements>(), FindFirstObjectByType<RisingLava>());
         hud.InitializeLavaText(lavaTmp);
         hud.SetShowLavaSpeed(showLavaSpeed);
+
+        TextThicknessUtility.ApplyBoldToAllTexts();
     }
 }
