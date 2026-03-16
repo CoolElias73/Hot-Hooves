@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -21,6 +22,8 @@ public class Movements : MonoBehaviour
     public Sprite goatCitronStanding;
     public bool noclipFly = false;
     public float flySpeed = 10f;
+    public Color jumpPowerupColor = Color.blue;
+    public float jumpPowerupFlashDuration = 1f;
 
     private Rigidbody2D rb;
     private SpriteRenderer sr;
@@ -32,6 +35,8 @@ public class Movements : MonoBehaviour
     private float _savedGravity;
     private bool _savedColliderEnabled;
     private Collider2D _playerCollider;
+    private Color _defaultColor;
+    private Coroutine _jumpFlashRoutine;
 
     public LayerMask groundMask;
     public Transform rightPoint;
@@ -44,6 +49,7 @@ public class Movements : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
         _playerCollider = GetComponent<Collider2D>();
         defaultSprite = sr.sprite;
+        _defaultColor = sr.color;
         if (audioSource == null)
             audioSource = GetComponent<AudioSource>();
     }
@@ -203,6 +209,25 @@ public class Movements : MonoBehaviour
         speed += speedIncrease;
         jumpForce += jumpIncrease;
         jumpForceAdded += jumpIncrease;
+    }
+
+    public void FlashJumpPowerup()
+    {
+        if (sr == null)
+            return;
+
+        if (_jumpFlashRoutine != null)
+            StopCoroutine(_jumpFlashRoutine);
+
+        _jumpFlashRoutine = StartCoroutine(JumpPowerupFlashRoutine());
+    }
+
+    IEnumerator JumpPowerupFlashRoutine()
+    {
+        sr.color = jumpPowerupColor;
+        yield return new WaitForSeconds(jumpPowerupFlashDuration);
+        sr.color = _defaultColor;
+        _jumpFlashRoutine = null;
     }
 
     void OnCollisionEnter(Collision collision)

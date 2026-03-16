@@ -17,6 +17,8 @@ public class Powerup : MonoBehaviour
             if (player != null)
             {
                 player.IncreaseStats(speedIncrease, jumpIncrease);
+                if (jumpIncrease > 0f)
+                    player.FlashJumpPowerup();
             }
 
             if (pickupSound != null)
