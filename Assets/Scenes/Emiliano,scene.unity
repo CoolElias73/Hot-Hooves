@@ -5822,6 +5822,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 79b2b41dc3d735242a251b07cbdd9983, type: 3}
+--- !u!1001 &402291198074756141
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2952600596943632357, guid: 9566ca7bd90c91d4782fd231ee815a60, type: 3}
+      propertyPath: m_Name
+      value: magma-lava-river-magma-heat-wave-background-texture-video_0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6672831440640910621, guid: 9566ca7bd90c91d4782fd231ee815a60, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -43.36
+      objectReference: {fileID: 0}
+    - target: {fileID: 6672831440640910621, guid: 9566ca7bd90c91d4782fd231ee815a60, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -7.95
+      objectReference: {fileID: 0}
+    - target: {fileID: 6672831440640910621, guid: 9566ca7bd90c91d4782fd231ee815a60, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6672831440640910621, guid: 9566ca7bd90c91d4782fd231ee815a60, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6672831440640910621, guid: 9566ca7bd90c91d4782fd231ee815a60, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6672831440640910621, guid: 9566ca7bd90c91d4782fd231ee815a60, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6672831440640910621, guid: 9566ca7bd90c91d4782fd231ee815a60, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6672831440640910621, guid: 9566ca7bd90c91d4782fd231ee815a60, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6672831440640910621, guid: 9566ca7bd90c91d4782fd231ee815a60, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6672831440640910621, guid: 9566ca7bd90c91d4782fd231ee815a60, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9566ca7bd90c91d4782fd231ee815a60, type: 3}
 --- !u!1001 &2806342161365860856
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6249,3 +6306,4 @@ SceneRoots:
   - {fileID: 8250103695323274666}
   - {fileID: 2806342161365860856}
   - {fileID: 5565668401462565100}
+  - {fileID: 402291198074756141}
